@@ -79,7 +79,9 @@ const Home = ({
   const { data, error, refetch } = useQuery(
     ['GetModels', apiKey, serverSideApiKeyIsSet],
     ({ signal }) => {
-      if (!apiKey && !serverSideApiKeyIsSet) return null;
+      if (!apiKey && !serverSideApiKeyIsSet) {
+        return null;
+      }
 
       return getModels(
         {
@@ -92,7 +94,9 @@ const Home = ({
   );
 
   useEffect(() => {
-    if (data) dispatch({ field: 'models', value: data });
+    if (data) {
+      dispatch({ field: 'models', value: data });
+    }
   }, [data, dispatch]);
 
   useEffect(() => {
@@ -364,7 +368,7 @@ const Home = ({
         <meta name="description" content="ChatGPT but better." />
         <meta
           name="viewport"
-          content="height=device-height ,width=device-width, initial-scale=1, user-scalable=no"
+          content="height=device-height ,width=device-width, initial-scale=1, maximum-scale=5"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
